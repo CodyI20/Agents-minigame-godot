@@ -12,5 +12,5 @@ script = ExtResource("2_b43e5")
 [node name="Model" parent="." index="0"]
 material_override = SubResource("StandardMaterial3D_jiebl")
 
-[node name="RayCast3D" parent="." index="3"]
+[node name="RayCast3D" parent="." index="4"]
 collide_with_areas = true

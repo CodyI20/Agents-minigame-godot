@@ -7,6 +7,8 @@ const OUTLINE_MATERIAL = preload("res://Art/Materials/OutlineMaterial.tres")
 # ON-READY
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var model: MeshInstance3D = $Model
+@onready var highlight_sprite: Sprite3D = $HighlightSprite
+
 
 @export_category("Properties")
 ## The speed at which the agent travels
@@ -17,10 +19,12 @@ const OUTLINE_MATERIAL = preload("res://Art/Materials/OutlineMaterial.tres")
 @export var raycast_length := 1000
 
 var selected := false
+var result
 
 func _ready() -> void:
 	add_to_group("Selectable")
 	Events.navmesh_agent_selected.connect(select)
+	toggle_highlight(false)
 		
 func _physics_process(delta: float) -> void:
 	var destination = navigation_agent_3d.get_next_path_position()
@@ -36,11 +40,9 @@ func is_under_mouse() -> bool:
 	var from = camera.project_ray_origin(mouse_position)
 	var to = from + camera.project_ray_normal(mouse_position) * raycast_length
 	
-	ray_cast_3d.global_transform.origin = from
-	ray_cast_3d.target_position = to
-	ray_cast_3d.force_raycast_update()
-				
-	if ray_cast_3d.is_colliding():
+	var space_state = get_world_3d().direct_space_state
+	result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from,to))
+	if result.has("collider"):
 		return true
 	return false
 
@@ -62,6 +64,8 @@ func deselect() -> void:
 
 func toggle_highlight(toggle_on : bool) -> void:
 	if toggle_on:
+		highlight_sprite.visible = true
 		model.material_overlay = OUTLINE_MATERIAL
 	else:
+		highlight_sprite.visible = false
 		model.material_overlay = null

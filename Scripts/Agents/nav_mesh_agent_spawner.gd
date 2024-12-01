@@ -39,13 +39,10 @@ func check_mouse_event(event: InputEvent) -> void:
 				var from = camera.project_ray_origin(mouse_position)
 				var to = from + camera.project_ray_normal(mouse_position) * raycast_length
 				
-				# Raycasting
-				ray_cast_3d.global_transform.origin = from
-				ray_cast_3d.target_position = to
-				ray_cast_3d.force_raycast_update()
-				
-				if ray_cast_3d.is_colliding():
-					var click_point = ray_cast_3d.get_collision_point()
+				var space_state = get_world_3d().direct_space_state
+				var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from,to))
+				if result.has("position"):
+					var click_point = result.position
 					if event.button_index == MOUSE_BUTTON_RIGHT:
 						spawn_agent(click_point)
 					

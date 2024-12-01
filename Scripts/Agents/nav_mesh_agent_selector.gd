@@ -16,12 +16,9 @@ func highlight_agent_under_mouse() -> void:
 	var from = camera.project_ray_origin(mouse_position)
 	var to = from + camera.project_ray_normal(mouse_position) * 1000
 	
-	ray_cast_3d.global_transform.origin = from
-	ray_cast_3d.target_position = to
-	ray_cast_3d.force_raycast_update()
-				
-	if ray_cast_3d.is_colliding():
-		var collider = ray_cast_3d.get_collider()
-		if collider is NavMeshAgentBase:
-			Events.navmesh_agent_selected.emit(collider)
-			currently_selected_agent = collider
+	var space_state = get_world_3d().direct_space_state
+	var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from,to))
+	if result.has("collider"):
+		if result.collider is NavMeshAgentBase:
+			Events.navmesh_agent_selected.emit(result.collider)
+			currently_selected_agent = result.collider
