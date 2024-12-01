@@ -21,22 +21,8 @@ var selected := false
 func _ready() -> void:
 	add_to_group("Selectable")
 	Events.navmesh_agent_selected.connect(select)
-
-func _unhandled_input(event: InputEvent) -> void:
-	move_the_agent(event)
-
-func move_the_agent(event: InputEvent) -> void:
-	# Checking if the input event is a mouse button press
-	if event is InputEventMouseButton:
-		# Making sure the LEFT MOUSE BUTTON is pressed
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			if is_under_mouse():
-				var click_point = ray_cast_3d.get_collision_point()
-				navigation_agent_3d.set_target_position(click_point)
 		
 func _physics_process(delta: float) -> void:
-	if not selected:
-		return
 	var destination = navigation_agent_3d.get_next_path_position()
 	var local_destination = destination - global_position
 	var direction = local_destination.normalized()
@@ -68,6 +54,7 @@ func select(agent: NavMeshAgentBase) -> void:
 	else:
 		selected = true
 		toggle_highlight(true)
+	
 
 func deselect() -> void:
 	selected = false

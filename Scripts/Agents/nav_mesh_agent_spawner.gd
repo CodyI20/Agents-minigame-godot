@@ -16,13 +16,13 @@ const REGULAR_NAV_MESH_AGENT = preload("res://Scenes/Agents/Inherited/regular_na
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 
 # OTHERS
-enum NavMeshAgentType { REGULAR, PATROLLING }
-var currently_selected_agent_type : NavMeshAgentType
+var currently_selected_agent_type := Events.NavMeshAgentType.REGULAR
 
 func _ready() -> void:
-	# Subscribe to some event that will help change the agent type
-	pass
+	Events.ui_navmesh_agent_chosen.connect(set_current_agent_type)
 
+func set_current_agent_type(agent_type : Events.NavMeshAgentType) -> void:
+	currently_selected_agent_type = agent_type
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -50,6 +50,11 @@ func check_mouse_event(event: InputEvent) -> void:
 						spawn_agent(click_point)
 					
 func spawn_agent(position : Vector3) -> void:
-	var instance = REGULAR_NAV_MESH_AGENT.instantiate()
-	regular_agents_container.add_child(instance)
+	var instance
+	if currently_selected_agent_type == Events.NavMeshAgentType.REGULAR:
+		instance = REGULAR_NAV_MESH_AGENT.instantiate()
+		regular_agents_container.add_child(instance)
+	elif currently_selected_agent_type == Events.NavMeshAgentType.PATROLLING:
+		instance = PATROLLING_NAV_MESH_AGENT.instantiate()
+		patrolling_agents_container.add_child(instance)
 	instance.global_transform.origin = position + Vector3.UP

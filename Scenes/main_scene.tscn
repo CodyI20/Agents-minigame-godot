@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjr26vmqp1sap"]
+[gd_scene load_steps=8 format=3 uid="uid://bjr26vmqp1sap"]
 
-[ext_resource type="PackedScene" uid="uid://dun4c5mnmpc2a" path="res://Scenes/Agents/nav_mesh_agent_spawner.tscn" id="1_oif8a"]
+[ext_resource type="PackedScene" uid="uid://dun4c5mnmpc2a" path="res://Scenes/Agents/Spawner/nav_mesh_agent_spawner.tscn" id="1_oif8a"]
+[ext_resource type="PackedScene" uid="uid://dd0p878x7ntbv" path="res://Scenes/Agents/UI/nav_mesh_agent_picker.tscn" id="2_oyxkh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gintu"]
 
@@ -120,3 +121,8 @@ size = Vector3(50.0539, 6.66495, 1)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.6002, 3.27165, 0.0549281)
 use_collision = true
 size = Vector3(50.0539, 6.66495, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NavMeshAgentPicker" parent="CanvasLayer" instance=ExtResource("2_oyxkh")]
+mouse_filter = 1

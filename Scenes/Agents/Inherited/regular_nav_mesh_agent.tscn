@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8ad7o3y5a67d"]
+[gd_scene load_steps=4 format=3 uid="uid://c8ad7o3y5a67d"]
 
 [ext_resource type="PackedScene" uid="uid://b7k3712433utv" path="res://Scenes/Agents/navigation_agent_base.tscn" id="1_hwomq"]
 [ext_resource type="Script" path="res://Scripts/Agents/Regular/regular_nav_mesh_agent.gd" id="2_b43e5"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jiebl"]
+albedo_color = Color(0.757581, 0.780866, 1.15514e-06, 1)
+
 [node name="RegularNavMeshAgent" instance=ExtResource("1_hwomq")]
 script = ExtResource("2_b43e5")
+
+[node name="Model" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_jiebl")
 
 [node name="RayCast3D" parent="." index="3"]
 collide_with_areas = true

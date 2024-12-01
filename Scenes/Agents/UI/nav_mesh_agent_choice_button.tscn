@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ru0ctxpjjnnc"]
+
+[ext_resource type="Script" path="res://Scripts/Agents/UI/nav_mesh_agent_choice_button.gd" id="1_lg1hd"]
+
+[node name="NavMeshAgentChoiceButton" type="Button"]
+anchors_preset = -1
+anchor_right = 0.127605
+anchor_bottom = 0.075
+script = ExtResource("1_lg1hd")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

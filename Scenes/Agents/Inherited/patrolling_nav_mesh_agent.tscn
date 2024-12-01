@@ -1,5 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnnses0e8j3rn"]
+[gd_scene load_steps=4 format=3 uid="uid://dnnses0e8j3rn"]
 
 [ext_resource type="PackedScene" uid="uid://b7k3712433utv" path="res://Scenes/Agents/navigation_agent_base.tscn" id="1_bbau2"]
+[ext_resource type="Script" path="res://Scripts/Agents/Patrolling/patrolling_nav_mesh_agent.gd" id="2_vqrsa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_simnh"]
+albedo_color = Color(0.645561, 0.0369989, 0.997508, 1)
 
 [node name="PatrollingNavMeshAgent" instance=ExtResource("1_bbau2")]
+script = ExtResource("2_vqrsa")
+
+[node name="Model" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_simnh")
