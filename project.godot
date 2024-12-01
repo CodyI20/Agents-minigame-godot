@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/main_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Art/2D/icon.svg"
 
+[autoload]
+
+Events="*res://Scripts/Global/Events.gd"
+
 [display]
 
 window/size/viewport_width=1920
@@ -35,6 +39,10 @@ folder_colors={
 "res://Scenes/": "green",
 "res://Scripts/": "blue"
 }
+
+[global_group]
+
+Selectable="Used for the selection logic of the NavMeshAgents"
 
 [input]
 

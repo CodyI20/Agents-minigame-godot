@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bjr26vmqp1sap"]
 
-[ext_resource type="PackedScene" uid="uid://c8ad7o3y5a67d" path="res://Scenes/Agents/Inherited/regular_nav_mesh_agent.tscn" id="1_dxnpx"]
+[ext_resource type="PackedScene" uid="uid://dun4c5mnmpc2a" path="res://Scenes/Agents/nav_mesh_agent_spawner.tscn" id="1_oif8a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gintu"]
 
@@ -23,7 +23,7 @@ geometry_parsed_geometry_type = 2
 [node name="SceneElements" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="SceneElements"]
-transform = Transform3D(-0.00604881, 0.998792, -0.0487724, 0, 0.0487733, 0.99881, 0.999982, 0.00604161, -0.00029502, -2.51862, 39.7859, 0.228611)
+transform = Transform3D(-0.00157797, 0.999012, -0.0444146, 0, 0.0444147, 0.999013, 0.999999, 0.00157641, -7.00849e-05, -2.4959, 41.4206, -0.16344)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SceneElements"]
 transform = Transform3D(-0.356906, -0.923157, 0.142826, -0.445914, 0.302718, 0.842332, -0.820841, 0.236945, -0.51969, 2.42625, 40.6795, -67.4475)
@@ -33,10 +33,11 @@ directional_shadow_mode = 0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SceneElements"]
 environment = SubResource("Environment_6gm1o")
 
-[node name="RegularAgents" type="Node3D" parent="."]
+[node name="NavMeshAgentSpawner" parent="." node_paths=PackedStringArray("regular_agents_container", "patrolling_agents_container") instance=ExtResource("1_oif8a")]
+regular_agents_container = NodePath("../RegularAgents")
+patrolling_agents_container = NodePath("../PatrollingAgents")
 
-[node name="RegularNavMeshAgent" parent="RegularAgents" instance=ExtResource("1_dxnpx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="RegularAgents" type="Node3D" parent="."]
 
 [node name="PatrollingAgents" type="Node3D" parent="."]
 

@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7k3712433utv"]
+[gd_scene load_steps=4 format=3 uid="uid://b7k3712433utv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gus0n"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_00rwa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nsxrq"]
 
-[node name="NavigationAgentBase" type="CharacterBody3D"]
+[node name="NavigationAgentBase" type="CharacterBody3D" groups=["Selectable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Model" type="MeshInstance3D" parent="."]
+material_overlay = SubResource("ShaderMaterial_gus0n")
 mesh = SubResource("CapsuleMesh_00rwa")
 
 [node name="Collision" type="CollisionShape3D" parent="."]

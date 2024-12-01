@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dun4c5mnmpc2a"]
+
+[ext_resource type="Script" path="res://Scripts/Agents/nav_mesh_agent_spawner.gd" id="1_780is"]
+
+[node name="NavMeshAgentSpawner" type="Node3D"]
+script = ExtResource("1_780is")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
