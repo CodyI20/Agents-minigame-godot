@@ -12,8 +12,17 @@ config_version=5
 
 config/name="NavMesh Minigame"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Art/2D/icon.svg"
 
 [dotnet]
 
 project/assembly_name="NavMesh Minigame"
+
+[file_customization]
+
+folder_colors={
+"res://Art/": "red",
+"res://Resources/": "purple",
+"res://Scenes/": "green",
+"res://Scripts/": "blue"
+}

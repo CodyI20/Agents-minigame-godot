@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjr26vmqp1sap"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gintu"]
+
+[sub_resource type="Sky" id="Sky_cb62f"]
+sky_material = SubResource("ProceduralSkyMaterial_gintu")
+
+[sub_resource type="Environment" id="Environment_6gm1o"]
+background_mode = 2
+sky = SubResource("Sky_cb62f")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_x0yk8"]
+
+[node name="MainScene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.599763, -0.374397, 0.707185, 0, 0.883785, 0.467892, -0.800178, -0.280625, 0.530062, 31.0791, 17.8519, 24.5571)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.356906, -0.923157, 0.142826, -0.445914, 0.302718, 0.842332, -0.820841, 0.236945, -0.51969, 2.42625, 40.6795, -67.4475)
+shadow_enabled = true
+directional_shadow_mode = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6gm1o")
+
+[node name="Ground" type="CSGMesh3D" parent="."]
+transform = Transform3D(25, 0, 0, 0, 1, 0, 0, 0, 25, 0, 0, 0)
+use_collision = true
+mesh = SubResource("PlaneMesh_x0yk8")
+
+[node name="Obstacles" type="Node3D" parent="."]
+
+[node name="VendingMachine" type="CSGPolygon3D" parent="Obstacles"]
+transform = Transform3D(-0.999946, 0, -0.0104369, 0, 1, 0, 0.0104369, 0, -0.999946, -8.92754, -0.171761, -2.52809)
+use_collision = true
+polygon = PackedVector2Array(0, 0, -2.65147, 4.49786, 2.20239, 4.3185, 2.65078, -0.0192878)
+depth = 4.22
+
+[node name="Ramp" type="CSGPolygon3D" parent="Obstacles"]
+transform = Transform3D(0.685327, 0.0017245, 0.728234, -0.00273065, 0.999996, 0.000201709, -0.728231, -0.00212681, 0.685329, 10.8262, 0.26783, -16.6057)
+use_collision = true
+polygon = PackedVector2Array(-12.7936, -0.366129, 2.51742, 3.16856, 2.53845, -0.365928)
+depth = 4.22
+
+[node name="DONUT" type="CSGTorus3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1, 14.1927)
+use_collision = true
+inner_radius = 0.552846
+outer_radius = 3.1275
+
+[node name="DONUT2" type="CSGTorus3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2204, 1, 6.48822)
+use_collision = true
+inner_radius = 0.552846
+outer_radius = 3.1275
+
+[node name="DONUT3" type="CSGTorus3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68316, 1, 16.205)
+use_collision = true
+inner_radius = 0.552846
+outer_radius = 4.87135
+
+[node name="Water Tower" type="CSGCylinder3D" parent="Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 5.77205, -7.04661)
+use_collision = true
+radius = 3.41353
+height = 11.4981
+
+[node name="Walls" type="Node3D" parent="Obstacles"]
+
+[node name="SeparatorWall1" type="CSGBox3D" parent="Obstacles/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9391, 3.27165, 7.25911)
+size = Vector3(10.315, 6.66495, 1)
+
+[node name="SeparatorWall2" type="CSGBox3D" parent="Obstacles/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.61143, 3.27165, -19.2857)
+size = Vector3(10.315, 6.66495, 1)
+
+[node name="SeparatorWall3" type="CSGBox3D" parent="Obstacles/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.43524, 3.27165, 18.8833)
+size = Vector3(10.315, 6.66495, 1)
+
+[node name="ZPositiveWall" type="CSGBox3D" parent="Obstacles/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0601082, 3.27165, 24.5371)
+use_collision = true
+size = Vector3(50.0539, 6.66495, 1)
+
+[node name="ZNegativeWall" type="CSGBox3D" parent="Obstacles/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0601082, 3.27165, -24.9052)
+use_collision = true
+size = Vector3(50.0539, 6.66495, 1)
+
+[node name="XPositiveWall" type="CSGBox3D" parent="Obstacles/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24.5706, 3.27165, 0.0549259)
+use_collision = true
+size = Vector3(50.0539, 6.66495, 1)
+
+[node name="XNegativeWall" type="CSGBox3D" parent="Obstacles/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.6002, 3.27165, 0.0549281)
+use_collision = true
+size = Vector3(50.0539, 6.66495, 1)
+
+[node name="RegularAgents" type="Node3D" parent="."]
+
+[node name="PatrollingAgents" type="Node3D" parent="."]
