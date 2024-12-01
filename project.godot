@@ -11,8 +11,17 @@ config_version=5
 [application]
 
 config/name="NavMesh Minigame"
+run/main_scene="res://Scenes/main_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Art/2D/icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/initial_position_type=3
+window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
