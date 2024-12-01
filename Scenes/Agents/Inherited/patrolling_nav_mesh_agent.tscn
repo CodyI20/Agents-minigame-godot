@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnnses0e8j3rn"]
+
+[ext_resource type="PackedScene" uid="uid://b7k3712433utv" path="res://Scenes/Agents/navigation_agent_base.tscn" id="1_bbau2"]
+
+[node name="PatrollingNavMeshAgent" instance=ExtResource("1_bbau2")]

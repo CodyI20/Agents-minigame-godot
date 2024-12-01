@@ -1,0 +1,2 @@
+extends NavMeshAgentBase
+class_name RegularNavMeshAgent

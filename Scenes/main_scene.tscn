@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bjr26vmqp1sap"]
 
-[ext_resource type="PackedScene" uid="uid://b7k3712433utv" path="res://Scenes/Agents/navigation_agent.tscn" id="1_2lw2p"]
+[ext_resource type="PackedScene" uid="uid://c8ad7o3y5a67d" path="res://Scenes/Agents/Inherited/regular_nav_mesh_agent.tscn" id="1_dxnpx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gintu"]
 
@@ -35,7 +35,7 @@ environment = SubResource("Environment_6gm1o")
 
 [node name="RegularAgents" type="Node3D" parent="."]
 
-[node name="NavigationAgent" parent="RegularAgents" instance=ExtResource("1_2lw2p")]
+[node name="RegularNavMeshAgent" parent="RegularAgents" instance=ExtResource("1_dxnpx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="PatrollingAgents" type="Node3D" parent="."]
