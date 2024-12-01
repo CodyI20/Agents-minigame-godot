@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dun4c5mnmpc2a"]
+[gd_scene load_steps=3 format=3 uid="uid://dun4c5mnmpc2a"]
 
 [ext_resource type="Script" path="res://Scripts/Agents/nav_mesh_agent_spawner.gd" id="1_780is"]
+[ext_resource type="Script" path="res://Scripts/Agents/nav_mesh_agent_selector.gd" id="2_uvdo0"]
 
 [node name="NavMeshAgentSpawner" type="Node3D"]
 script = ExtResource("1_780is")
+
+[node name="NavMeshAgentSelector" type="Node3D" parent="."]
+script = ExtResource("2_uvdo0")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]

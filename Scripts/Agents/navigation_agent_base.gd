@@ -20,6 +20,7 @@ var selected := false
 
 func _ready() -> void:
 	add_to_group("Selectable")
+	Events.navmesh_agent_selected.connect(select)
 
 func _unhandled_input(event: InputEvent) -> void:
 	move_the_agent(event)
@@ -57,9 +58,16 @@ func is_under_mouse() -> bool:
 		return true
 	return false
 
-func select() -> void:
-	selected = true
-	toggle_highlight(true)
+func select(agent: NavMeshAgentBase) -> void:
+	if agent != self:
+		deselect()
+		return
+		
+	if selected:
+		deselect()
+	else:
+		selected = true
+		toggle_highlight(true)
 
 func deselect() -> void:
 	selected = false

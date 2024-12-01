@@ -5,5 +5,5 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_bu2jp")
-shader_parameter/color = Color(1, 0, 0, 1)
-shader_parameter/size = 1.05
+shader_parameter/color = Color(0.954458, 3.60981e-06, 1.34766e-06, 1)
+shader_parameter/size = 1.3

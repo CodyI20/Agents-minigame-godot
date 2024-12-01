@@ -23,7 +23,7 @@ geometry_parsed_geometry_type = 2
 [node name="SceneElements" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="SceneElements"]
-transform = Transform3D(-0.00157797, 0.999012, -0.0444146, 0, 0.0444147, 0.999013, 0.999999, 0.00157641, -7.00849e-05, -2.4959, 41.4206, -0.16344)
+transform = Transform3D(-0.00149023, 0.999012, -0.0444146, 0, 0.0444146, 0.999013, 0.999999, 0.00148876, -6.61881e-05, -1.64623, 36.3571, -0.0426637)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SceneElements"]
 transform = Transform3D(-0.356906, -0.923157, 0.142826, -0.445914, 0.302718, 0.842332, -0.820841, 0.236945, -0.51969, 2.42625, 40.6795, -67.4475)
