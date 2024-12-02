@@ -41,6 +41,8 @@ func check_mouse_event(event: InputEvent) -> void:
 				
 				var space_state = get_world_3d().direct_space_state
 				var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from,to))
+				if result.has("collider") and result.collider is NavMeshAgentBase:
+					return
 				if result.has("position"):
 					var click_point = result.position
 					if event.button_index == MOUSE_BUTTON_RIGHT:

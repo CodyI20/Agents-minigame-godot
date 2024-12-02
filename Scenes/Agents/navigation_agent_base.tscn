@@ -8,6 +8,8 @@
 
 [node name="NavigationAgentBase" type="CharacterBody3D" groups=["Selectable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 
 [node name="Model" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_00rwa")
