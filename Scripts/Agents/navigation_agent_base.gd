@@ -19,7 +19,6 @@ const OUTLINE_MATERIAL = preload("res://Art/Materials/OutlineMaterial.tres")
 @export var raycast_length := 1000
 
 var selected := false
-var result
 
 func _ready() -> void:
 	add_to_group("Selectable")
@@ -33,18 +32,6 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = direction * 5.0
 	move_and_slide()
-
-func is_under_mouse() -> bool:
-	var camera = get_viewport().get_camera_3d()
-	var mouse_position = get_viewport().get_mouse_position()
-	var from = camera.project_ray_origin(mouse_position)
-	var to = from + camera.project_ray_normal(mouse_position) * raycast_length
-	
-	var space_state = get_world_3d().direct_space_state
-	result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from,to))
-	if result.has("collider"):
-		return true
-	return false
 
 func select(agent: NavMeshAgentBase) -> void:
 	if agent != self:

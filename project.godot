@@ -18,6 +18,7 @@ config/icon="res://Art/2D/icon.svg"
 [autoload]
 
 Events="*res://Scripts/Global/Events.gd"
+Utils="*res://Scripts/Global/Utils.gd"
 
 [display]
 

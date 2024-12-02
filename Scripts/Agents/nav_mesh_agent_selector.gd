@@ -11,13 +11,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			highlight_agent_under_mouse()
 
 func highlight_agent_under_mouse() -> void:
-	var camera = get_viewport().get_camera_3d()
-	var mouse_position = get_viewport().get_mouse_position()
-	var from = camera.project_ray_origin(mouse_position)
-	var to = from + camera.project_ray_normal(mouse_position) * 1000
-	
-	var space_state = get_world_3d().direct_space_state
-	var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from,to))
+	var result = Utils.is_under_mouse()
 	if result.has("collider"):
 		if result.collider is NavMeshAgentBase:
 			Events.navmesh_agent_selected.emit(result.collider)

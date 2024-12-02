@@ -31,22 +31,13 @@ func _unhandled_input(event: InputEvent) -> void:
 func check_mouse_event(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed:
-			var mouse_position = event.position
-			var viewport = get_viewport()
-			var camera = viewport.get_camera_3d()
-			
-			if camera:
-				var from = camera.project_ray_origin(mouse_position)
-				var to = from + camera.project_ray_normal(mouse_position) * raycast_length
-				
-				var space_state = get_world_3d().direct_space_state
-				var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from,to))
-				if result.has("collider") and result.collider is NavMeshAgentBase:
-					return
-				if result.has("position"):
-					var click_point = result.position
-					if event.button_index == MOUSE_BUTTON_RIGHT:
-						spawn_agent(click_point)
+			var result = Utils.is_under_mouse()
+			if result.has("collider") and result.collider is NavMeshAgentBase:
+				return
+			if result.has("position"):
+				var click_point = result.position
+				if event.button_index == MOUSE_BUTTON_RIGHT:
+					spawn_agent(click_point)
 					
 func spawn_agent(position : Vector3) -> void:
 	var instance
