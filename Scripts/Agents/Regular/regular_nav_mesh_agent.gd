@@ -1,11 +1,6 @@
 extends NavMeshAgentBase
 class_name RegularNavMeshAgent
 
-func _unhandled_input(event: InputEvent) -> void:
-	if not selected:
-		return
-	move_the_agent(event)
-
 func move_the_agent(event: InputEvent) -> void:
 	# Checking if the input event is a mouse button press
 	if event is InputEventMouseButton:

@@ -33,6 +33,14 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * 5.0
 	move_and_slide()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if not selected:
+		return
+	move_the_agent(event)
+
+func move_the_agent(event: InputEvent) -> void:
+	pass
+
 func select(agent: NavMeshAgentBase) -> void:
 	if agent != self:
 		deselect()

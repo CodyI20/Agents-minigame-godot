@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ku0rk42mabiv"]
+
+[ext_resource type="Texture2D" uid="uid://dh1efvlfwd4v8" path="res://Art/2D/circle.png" id="1_swmo4"]
+
+[node name="PatrolMarker" type="Sprite3D"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.01, 0)
+pixel_size = 1.0
+billboard = 1
+texture = ExtResource("1_swmo4")
