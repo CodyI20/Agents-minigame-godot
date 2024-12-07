@@ -24,7 +24,6 @@ shape = SubResource("CapsuleShape3D_nsxrq")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 target_desired_distance = 1.01
-debug_enabled = true
 debug_path_custom_color = Color(0, 0, 0, 1)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
