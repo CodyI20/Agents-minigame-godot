@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://bel866osrwrua"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Controls/toggle_text_button.gd" id="1_v4dw8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uoh1k"]
+font_size = 20
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Controls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.904
+anchor_top = 0.198
+anchor_right = 0.904
+anchor_bottom = 0.198
+offset_left = -186.68
+offset_top = -176.84
+offset_right = 181.32
+offset_bottom = 230.16
+grow_horizontal = 2
+text = " - CLICK RMB (Right mouse button) anywhere on the map to spawn an agent (if none are selected the default is REGULAR)
+
+- CLICK LMB (Left mouse button) on an agent to select/deselect it
+
+- CLICK LMB (Left mouse button) anywhere on the map with an agent selected to make it move (NOTE: Patrolling agents require two points)"
+label_settings = SubResource("LabelSettings_uoh1k")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="Label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.313726)
+
+[node name="ToggleTextButton" type="Button" parent="." node_paths=PackedStringArray("label")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.951
+anchor_top = 0.409
+anchor_right = 0.951
+anchor_bottom = 0.409
+offset_left = 33.08
+offset_top = -438.72
+offset_right = 90.08
+offset_bottom = -407.72
+text = "HIDE"
+script = ExtResource("1_v4dw8")
+label = NodePath("../Label")
