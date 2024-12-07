@@ -32,6 +32,8 @@ func check_mouse_event(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed:
 			var result = Utils.is_under_mouse()
+			if result == null:
+				return
 			if result.has("collider") and result.collider is NavMeshAgentBase:
 				return
 			if result.has("position"):

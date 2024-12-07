@@ -12,6 +12,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func highlight_agent_under_mouse() -> void:
 	var result = Utils.is_under_mouse()
+	if result == null:
+		return
 	if result.has("collider"):
 		if result.collider is NavMeshAgentBase:
 			Events.navmesh_agent_selected.emit(result.collider)
